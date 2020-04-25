@@ -1,0 +1,16 @@
+<div class="menu-sidebar-content pb-2">
+    <h4>Mes langages :</h4>
+    <div class="pt-2" *ngFor="let tempUtilisation of mesUtilisations">
+        <h6><u>{{ tempUtilisation }}</u></h6>
+        <div *ngFor="let tempLangage of mesLangages">
+            <nav *ngIf="tempUtilisation == tempLangage.utilisation" class="navbar-sidebar">
+                <ul class="list-unstyled">
+                    <li>
+                        <a  routerLink="#" routerLinkActive="#">
+                            {{ tempLangage.nom }} </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
