@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Langage } from 'src/app/classes/langage';
 import { LangagesService } from 'src/app/services/langages.service';
-import { Outil } from 'src/app/classes/outil';
+import { Utilisation } from 'src/app/classes/utilisation';
+import { DtoLangageUtilisation } from 'src/app/classes/dto/dto-langage-utilisation';
 
 @Component({
   selector: 'app-menu',
@@ -10,25 +10,24 @@ import { Outil } from 'src/app/classes/outil';
 })
 export class MenuComponent implements OnInit {
 
-  mesLangages: Langage[] = [];
-  mesUtilisations: String[] = ["Programmation", "Base de données", "OS"];
-  mesOutils: Outil[] = [];
-  idLangage: String = "";
+  mesLangages: DtoLangageUtilisation[] = [];
+  mesUtilisations: Utilisation[] = [];
   constructor(private langageService: LangagesService) { }
 
   ngOnInit(): void {
+    this.listUtilisations();
     this.listLangages();
   }
 
-  listLangages(){
-    this.langageService.getLangages().subscribe(
-      data => this.mesLangages = data
+  listUtilisations() {
+    this.langageService.getUtilisations().subscribe(
+      data => this.mesUtilisations = data
     );
   }
 
-  listOutils(idLangage: String){
-    this.langageService.getOutilsLangage(idLangage).subscribe(
-      data => this.mesOutils = data
+  listLangages() {
+    this.langageService.getLangageWithUtilisation().subscribe(
+      data => this.mesLangages = data
     );
   }
 

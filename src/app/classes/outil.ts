@@ -1,4 +1,5 @@
 export class Outil {
-    id: String;
-    nom: String;
+    id: string;
+    nom: string;
+    imgUrl: string;
 }

@@ -1,0 +1,7 @@
+<div class="input-group mb-3">
+  <input #monInput type="text" (keyup.enter)="maRecherche(monInput.value)" class="form-control"
+    placeholder="Rechercher une action">
+  <div class="input-group-append">
+    <button (click)="maRecherche(monInput.value)" class="btn btn-dark" type="button">Go!</button>
+  </div>
+</div>

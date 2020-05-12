@@ -1,0 +1,45 @@
+<div class="main-content">
+    <!--Si des commandes sont trouvées-->
+    <div *ngIf="mesFonctions.length !== 0; else PasdeCommande">
+        <ul *ngFor="let tempFonction of mesFonctions">
+            <li>
+                <h5 class="mt-4"><u> {{ tempFonction.nomFonction }} </u><Span *ngIf="tempFonction.numEtape>0">. Etape
+                        N°{{ tempFonction.numEtape}}</Span></h5>
+                <p class="ml-3 my-0"><Span><i>Langage: </i></Span><span>{{ tempFonction.nom }}</span></p>
+                <p class="ml-3 my-0" *ngIf="tempFonction.nomFichier.length >0"><Span><i>Nom du fichier :
+                        </i></Span><span>{{ tempFonction.nomFichier }}</span></p>
+                <p class="ml-3 my-0"><Span><i>Detail(s): </i></Span><span>{{ tempFonction.detail }}</span></p>
+                <p class="ml-3 d-inline"><i>Commande(s) : </i>
+                <pre class="ml-5">{{ tempFonction.ligneCommande }}</pre>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Si il n'y a pas d'outil pour le langage sélectionné-->
+    <ng-template #PasdeCommande>
+        <div class="alert alert-info" role="alert">
+            Aucune fonction ne contient le mot : {{ keyword }}
+        </div>
+    </ng-template>
+
+    <!-- début footer-->
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-8" style="padding-left: 25%;">
+                        <!-- possibilité de rajouter << et >> pour aller à la première ou dernière page-->
+                        <!-- [boundaryLinks] = true -->
+                        <ngb-pagination [(page)]="leNumPage" [pageSize]="laTaillePage" [collectionSize]="totalElement"
+                            [maxSize]="3" (pageChange)="listFonctionSearch()">
+                        </ngb-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin footer -->
+</div>

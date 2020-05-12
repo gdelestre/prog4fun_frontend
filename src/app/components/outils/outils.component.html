@@ -1,0 +1,40 @@
+<div class="main-content">
+
+    <h4 class="pl-2"> <u>Mes outils pour {{ langageSelect.nom }} : </u></h4>
+    <!-- Classe pour faire le système de grille-->
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div *ngFor="let tempOutil of mesOutilsDeLangage" class="col-md-3">
+
+                    <!-- Classe pour les composants de la grille-->
+                    <div class="product-box text-center">
+                        <a routerLink="outils/{{ tempOutil.id }}/actions" routerLinkActive="active-link">
+                            <img src="{{ tempOutil.imgUrl }}" class="imgPerso img-responsive">
+                        </a>
+                        <a routerLink="outils/{{ tempOutil.id }}/actions" routerLinkActive="active-link">
+                            <p><i>{{tempOutil.nom}}</i></p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Si il n'y a pas d'outil pour le langage sélectionné-->
+    <div *ngIf="mesOutilsDeLangage.length==0">
+        <div class="alert alert-info" role="alert">
+            Pas d'outil pour ce langage.
+        </div>
+    </div>
+
+    <!-- Séparateur entre div -->
+    <hr>
+
+    <div class="container-fluid">
+        <h4><u> Mes commandes de base pour {{ langageSelect.nom }} : </u></h4>
+        <a class="btn btn-outline-secondary mt-2" routerLink="commandes" routerLinkActive="active-link">Rechercher</a>
+    </div>
+
+</div>

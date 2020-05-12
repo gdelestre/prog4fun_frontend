@@ -2,18 +2,15 @@
 
   <div class="row align-items-start">
     <div class="col-sm-2">
-      <img src="assets\images\logo.png" alt="prog4fun" class="img-responsive" height="100" width="150">
+      <a routerLink="/acceuil">
+      <img src="assets/images/logo.png" alt="prog4fun" class="img-responsive" height="100" width="150">
+    </a>
     </div>
     <div class="col-sm-10 bg-secondary text-white">
       <h3 class="font-italic text-center">Bienvenue sur mon pense-bête</h3>
 
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Rechercher une action" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-dark" type="button">Go!</button>
-        </div>
-      </div>
+      <!-- Barre de recherche-->
+      <app-barre-recherche></app-barre-recherche>
     </div>
   </div>
 
@@ -27,7 +24,7 @@
 
     <!-- Div principale-->
     <div class="col-lg-10">
-      <app-acceuil></app-acceuil>
+      <router-outlet></router-outlet>
     </div>
 
   </div>

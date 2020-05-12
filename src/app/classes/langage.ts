@@ -1,7 +1,5 @@
 export class Langage {
-
-    id: String;
-    nom: String;
-    utilisation: String;
+    id: string;
+    nom: string;
     
 }

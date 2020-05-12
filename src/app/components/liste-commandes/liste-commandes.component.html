@@ -1,0 +1,47 @@
+<div class="main-content">
+    <div *ngIf="myCommandesWithFonction.length !== 0; else PasdeCommande">
+
+        <ul *ngFor="let tempCommande of myCommandesWithFonction;">
+            <li>
+                <h5 class="mt-4"><u> {{ tempCommande.nomCommande }} </u></h5>
+                <p class="ml-3"><Span><i>Detail(s): </i></Span><span>{{ tempCommande.detailCommande }}</span></p>
+                <p class="ml-3 d-inline"><i>Commande(s) : </i>
+                <pre class="ml-5">{{ tempCommande.ligneCommande }}</pre>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Si il n'y a pas d'outil pour le langage sélectionné-->
+    <ng-template #PasdeCommande>
+        <div class="alert alert-info" role="alert">
+            Il n'y a pas de commande pour le moment pour ce langage.
+        </div>
+    </ng-template>
+
+    <!-- begin footer-->
+    <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-outline-secondary mx-4" routerLink="/acceuil">Acceuil</a>
+                <a class="btn btn-outline-secondary ml-4" routerLink="/langage/{{ idLangageSelect }}"
+                    routerLinkActive="active-link">Retour</a>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-8" style="padding-left: 25%;">
+
+                        <!-- possibilité de rajouter << et >> pour aller à la première ou dernière page-->
+                        <!-- [boundaryLinks] = true -->
+                        <ngb-pagination [(page)]="leNumPage" [pageSize]="laTaillePage" [collectionSize]="totalElement"
+                            [maxSize]="3" (pageChange)="listCommandeWithFonction()">
+                        </ngb-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+
+</div>
