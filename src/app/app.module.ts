@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AcceuilComponent } from './components/acceuil/acceuil.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,16 +21,16 @@ const routes: Routes =[
   {path: 'langage/:idLang/outils/:idOut/actions', component: ListeActionsComponent},
   {path: 'langage/:idLang/commandes', component: ListeCommandesComponent},
   {path: 'langage/:idLang', component: OutilsComponent},
-  {path: 'acceuil', component: AcceuilComponent},
-  {path: '', redirectTo: '/acceuil', pathMatch: 'full'},
-  {path: '**', redirectTo: '/acceuil', pathMatch: 'full'}
+  {path: 'accueil', component: AccueilComponent },
+  {path: '', redirectTo: '/accueil', pathMatch: 'full'},
+  {path: '**', redirectTo: '/accueil', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    AcceuilComponent,
+    AccueilComponent,
     OutilsComponent,
     ListeCommandesComponent,
     ListeActionsComponent,

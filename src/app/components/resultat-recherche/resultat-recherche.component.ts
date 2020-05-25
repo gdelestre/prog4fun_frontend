@@ -16,7 +16,7 @@ export class ResultatRechercheComponent implements OnInit {
 
   // Propriété pour la pagination
   leNumPage: number = 1;
-  laTaillePage: number = 2;
+  laTaillePage: number = 4;
   totalElement: number = 10;
 
   constructor(private route: ActivatedRoute, private rechercheService: RechercheService) { }
