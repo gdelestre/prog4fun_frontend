@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
 
 @Component({
   selector: 'app-barre-recherche',
@@ -8,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class BarreRechercheComponent implements OnInit {
 
-  constructor(private router: Router ) { }
+  isUserLoggedIn: boolean;
+
+  constructor(private router: Router, private dataSharingService: DataSharingService ) {
+        // Vérification de la valeur pour savoir si l'utilisateur est enregistré ou non 
+        this.dataSharingService.isUserLoggedIn.subscribe( value => {
+          this.isUserLoggedIn = value;
+      });
+   }
 
   ngOnInit(): void {
   }
@@ -16,5 +24,7 @@ export class BarreRechercheComponent implements OnInit {
   maRecherche(keyword: String){
     this.router.navigateByUrl(`/search/${ keyword }`)
   }
+
+  
 
 }

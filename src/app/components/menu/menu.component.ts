@@ -3,6 +3,9 @@ import { LangagesService } from 'src/app/services/langages.service';
 import { Utilisation } from 'src/app/classes/utilisation';
 import { DtoLangageUtilisation } from 'src/app/classes/dto/dto-langage-utilisation';
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthentificationService } from 'src/app/services/authentification.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,11 +15,16 @@ export class MenuComponent implements OnInit {
 
   mesLangages: DtoLangageUtilisation[] = [];
   mesUtilisations: Utilisation[] = [];
-  constructor(private langageService: LangagesService) { }
+
+  isLoggedIn = false;
+
+  constructor(private langageService: LangagesService, private router: Router,
+              private authenticationService: AuthentificationService) { }
 
   ngOnInit(): void {
     this.listUtilisations();
     this.listLangages();
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
   }
 
   listUtilisations() {
@@ -29,6 +37,10 @@ export class MenuComponent implements OnInit {
     this.langageService.getLangageWithUtilisation().subscribe(
       data => this.mesLangages = data
     );
+  }
+
+  handleLogout() {
+    this.authenticationService.logout();
   }
 
 }

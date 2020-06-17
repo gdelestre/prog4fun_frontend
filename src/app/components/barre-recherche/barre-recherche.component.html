@@ -1,4 +1,4 @@
-<div class="input-group mb-3">
+<div class="input-group mb-3"  *ngIf="isUserLoggedIn" >
   <input #monInput type="text" (keyup.enter)="maRecherche(monInput.value)" class="form-control"
     placeholder="Rechercher une action">
   <div class="input-group-append">

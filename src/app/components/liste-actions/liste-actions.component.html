@@ -1,48 +1,57 @@
-<div class="main-content">
-    <div *ngIf="myActionsWithFonction.length !== 0; else PasdeCommande">
+<div class="row pt-4">
 
-        <ul *ngFor="let tempAction of myActionsWithFonction;">
-            <li>
-                <h5 class="mt-4"><u> {{ tempAction.nomAction }} </u> : Etape N°{{ tempAction.numEtape }}</h5>
-                <p class="ml-3 my-0" *ngIf="tempAction.nomFichier.length >0"><Span><i>Nom du fichier : </i></Span><span>{{ tempAction.nomFichier }}</span></p>
-                <p class="ml-3 my-0"><Span><i>Détail(s) : </i></Span><span>{{ tempAction.detail }}</span></p>
-                <p class="ml-3 my-0"><i>Commande(s) : </i> <pre class="ml-5">{{ tempAction.ligneCommande }}</pre>
-            </li>
-
-        </ul>
+    <!-- Menu -->
+    <div class="dropdown col-sm-2">
+        <app-menu></app-menu>
     </div>
 
-    <!-- Si il n'y a pas d'outil pour le langage sélectionné-->
-    <ng-template #PasdeCommande>
-        <div class="alert alert-info" role="alert">
-            Il n'y a pas d'action pour le moment pour cet outil.
+    <!-- Liste des actions-->
+    <div class="col-sm-10">
+
+        <div *ngIf="myActionsWithFonction.length !== 0; else PasdeCommande">
+
+            <ul *ngFor="let tempAction of myActionsWithFonction;">
+                <li>
+                    <h5 class="mt-4"><u> {{ tempAction.nomAction }} </u> : Etape N°{{ tempAction.numEtape }}</h5>
+                    <p class="ml-3 my-0" *ngIf="tempAction.nomFichier.length >0"><Span><i>Nom du fichier :
+                            </i></Span><span>{{ tempAction.nomFichier }}</span></p>
+                    <p class="ml-3 my-0"><Span><i>Détail(s) : </i></Span><span>{{ tempAction.detail }}</span></p>
+                    <p class="ml-3 my-0"><i>Commande(s) : </i>
+                    <pre class="ml-5">{{ tempAction.ligneCommande }}</pre>
+                </li>
+
+            </ul>
         </div>
-    </ng-template>
 
-    <!-- begin footer-->
-    <div class="footer-pagination">
-        <div class="row">
-            <div class="col-md-3">
-                <a class="btn btn-outline-secondary mx-4" routerLink="/accueil">Accueil</a>
-                <a class="btn btn-outline-secondary ml-4" 
-                routerLink="/langage/{{ idLangage }}" routerLinkActive="active-link">Retour</a>
-            </div>
+        <!-- begin footer-->
+        <div class="footer-pagination">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="btn btn-outline-secondary mx-4" routerLink="/accueil">Accueil</a>
+                    <a class="btn btn-outline-secondary ml-4" routerLink="/langage/{{ idLangage }}"
+                        routerLinkActive="active-link">Retour</a>
+                </div>
 
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-8" style="padding-left: 25%;">
-                        <!-- possibilité de rajouter << et >> pour aller à la première ou dernière page-->
-                        <!-- [boundaryLinks] = true -->
-                        <ngb-pagination [(page)]="leNumPage"
-                                        [pageSize]="laTaillePage"
-                                        [collectionSize]="totalElement"
-                                        [maxSize]="3"
-                                        (pageChange)="listActionWithFonction()">
-                        </ngb-pagination>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-8" style="padding-left: 25%;">
+                            <!-- possibilité de rajouter << et >> pour aller à la première ou dernière page-->
+                            <!-- [boundaryLinks] = true -->
+                            <ngb-pagination [(page)]="leNumPage" [pageSize]="laTaillePage"
+                                [collectionSize]="totalElement" [maxSize]="3" (pageChange)="listActionWithFonction()">
+                            </ngb-pagination>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end footer -->
+
+        <!-- Si il n'y a pas d'outil pour le langage sélectionné-->
+        <ng-template #PasdeCommande>
+            <div class="alert alert-info" role="alert">
+                Il n'y a pas d'action pour le moment pour cet outil.
+            </div>
+        </ng-template>
     </div>
-    <!-- end footer -->
 </div>

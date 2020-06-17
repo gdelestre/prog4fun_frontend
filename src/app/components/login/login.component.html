@@ -1,0 +1,22 @@
+<div class="container col-lg-6 pt-4">
+    <h3 class="text-center">Formulaire d'identification</h3>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group">
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-group">
+            <label for="email">Identifiant :</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Entrer votre identifiant"
+              name="username">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Mot de passe :</label>
+            <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Entrer votre mot de passe"
+              name="password">
+          </div>
+          <button (click)=handleLogin() class="btn btn-success">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>

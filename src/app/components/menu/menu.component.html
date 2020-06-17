@@ -1,3 +1,4 @@
+
 <div class="menu-sidebar-content pb-2">
     <h4>Mes langages :</h4>
     <div class="pt-2" *ngFor="let tempUtilisation of mesUtilisations">
@@ -13,4 +14,7 @@
             </nav>
         </div>
     </div>
+</div>
+<div class="pt-4" *ngIf="isLoggedIn">
+    <a class="btn btn-outline-primary btn-sm" href="/logout" (click)=handleLogout()>Déconnexion</a>
 </div>
