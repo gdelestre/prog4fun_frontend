@@ -20,7 +20,7 @@ export class OutilsComponent implements OnInit {
   ngOnInit(): void {
 
     // il faut souscrire avant pour que l'id du langage soit actualisé à chaque clic
-    this.route.paramMap.subscribe( () => {
+    this.route.paramMap.subscribe(() => {
       this.listeOutilsParLangage();
     });
   }
@@ -34,8 +34,6 @@ export class OutilsComponent implements OnInit {
     this.langageService.getOneLangage(this.idLangageSelect).subscribe(
       data => this.langageSelect = data
     );
-
   }
-
 
 }

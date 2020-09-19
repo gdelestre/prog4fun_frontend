@@ -22,7 +22,7 @@ export class ResultatRechercheComponent implements OnInit {
   constructor(private route: ActivatedRoute, private rechercheService: RechercheService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( () => {
+    this.route.paramMap.subscribe(() => {
       this.listFonctionSearch();
     });
   }
@@ -32,13 +32,13 @@ export class ResultatRechercheComponent implements OnInit {
     this.keyword = this.route.snapshot.paramMap.get("keyword");
 
     //Si le mot recherché change, retour à la page 1
-    if (this.previousKeyword != this.keyword){
+    if (this.previousKeyword != this.keyword) {
       this.leNumPage = 1;
     }
     this.previousKeyword = this.keyword;
 
     //Récupère les commandes à partir du mot tapé dans la barre de recherche
-    this.rechercheService.getAllFonctions(this.keyword, this.leNumPage -1, this.laTaillePage)
+    this.rechercheService.getAllFonctions(this.keyword, this.leNumPage - 1, this.laTaillePage)
       .subscribe(this.processResult());
   }
 
@@ -51,6 +51,5 @@ export class ResultatRechercheComponent implements OnInit {
       this.totalElement = data.page.totalElements;
     };
   }
-
 
 }

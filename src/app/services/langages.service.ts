@@ -15,7 +15,6 @@ export class LangagesService {
 
   constructor(private httpClient: HttpClient) { }
 
-
   getUtilisations(): Observable<Utilisation[]> {
     return this.httpClient.get<getResponseUtilisation>(`${this.baseUrl}/utilisations`).pipe(
       map(response => response._embedded.utilisations)
@@ -34,7 +33,6 @@ export class LangagesService {
     const url = `${this.baseUrl}/langages/${idLangage}`;
     return this.httpClient.get<Langage>(url);
   }
-
 
   getLangageWithUtilisation(): Observable<DtoLangageUtilisation[]> {
     const url = `${this.baseUrl}/langages/search/langageAvecUtilisation`;
