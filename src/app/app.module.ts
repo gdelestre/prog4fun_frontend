@@ -14,19 +14,18 @@ import { ResultatRechercheComponent } from './components/resultat-recherche/resu
 import { LoginComponent } from './components/login/login.component';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 import { LogoutComponent } from './components/logout/logout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-const routes: Routes =[
-  {path: 'login', component: LoginComponent},
-  {path: 'search/:keyword', component: ResultatRechercheComponent},
-  {path: 'langage/:idLang/outils/:idOut/actions', component: ListeActionsComponent},
-  {path: 'langage/:idLang/commandes', component: ListeCommandesComponent},
-  {path: 'langage/:idLang', component: OutilsComponent},
-  {path: 'accueil', component: AccueilComponent },
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: '**', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'logout', component: LoginComponent}
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'search/:keyword', component: ResultatRechercheComponent },
+  { path: 'langage/:idLang/outils/:idOut/actions', component: ListeActionsComponent },
+  { path: 'langage/:idLang/commandes', component: ListeCommandesComponent },
+  { path: 'langage/:idLang', component: OutilsComponent },
+  { path: 'accueil', component: AccueilComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'logout', component: LoginComponent }
 ];
 
 @NgModule({
@@ -47,7 +46,8 @@ const routes: Routes =[
     FormsModule,
     HttpClientModule,
     BrowserModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
 
   providers: [

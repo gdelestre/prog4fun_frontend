@@ -34,8 +34,6 @@ export class OutilsComponent implements OnInit {
     this.langageService.getOneLangage(this.idLangageSelect).subscribe(
       data => this.langageSelect = data
     );
-
   }
-
 
 }

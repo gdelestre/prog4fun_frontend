@@ -25,6 +25,4 @@ export class BarreRechercheComponent implements OnInit {
     this.router.navigateByUrl(`/search/${ keyword }`)
   }
 
-  
-
 }

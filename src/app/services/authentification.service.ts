@@ -7,18 +7,17 @@ import { DataSharingService } from './data-sharing.service';
   providedIn: 'root'
 })
 export class AuthentificationService {
-  // BASE_PATH: 'http://localhost:8080'
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
   public username: String;
   public password: String;
+  private baseUrl = "http://prog4fun-env-1.eba-nedvvcb3.eu-west-3.elasticbeanstalk.com/authentification";
 
   constructor(private http: HttpClient, private dataSharingService: DataSharingService) {
-
   }
 
   authenticationService(username: String, password: String) {
-    return this.http.get(`http://localhost:8080/authentification`,
+    return this.http.get(this.baseUrl,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
