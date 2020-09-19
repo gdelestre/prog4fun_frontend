@@ -14,8 +14,7 @@ export class ActionsService {
   //Récupère les actions pour un outil avec la fonction qui lui est associée
   getActionWithFonction(idOutil: number, numPage: number, taillePage: number): Observable<getResponseActionFonction> {
     const url = `${this.baseUrl}/actionFonctionOutil?id=${idOutil}`
-    + `&page=${numPage}&size=${taillePage}`;;
-
+    + `&page=${numPage}&size=${taillePage}`;
     return this.httpClient.get<getResponseActionFonction>(url);
   }
 }
